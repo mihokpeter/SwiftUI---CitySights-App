@@ -19,6 +19,7 @@
 		BDBA0FDC2765217200C26111 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 		BDBA0FDE2765217500C26111 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BDBA0FE12765217500C26111 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		BDBA0FEB2765244400C26111 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +36,7 @@
 		BDBA0FCE2765217200C26111 = {
 			isa = PBXGroup;
 			children = (
+				BDBA0FEB2765244400C26111 /* Info.plist */,
 				BDBA0FD92765217200C26111 /* City Sights App */,
 				BDBA0FD82765217200C26111 /* Products */,
 			);
@@ -295,7 +297,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"City Sights App/Preview Content\"";
 				DEVELOPMENT_TEAM = 3GK85Y429W;
 				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "/Users/petermihok/Documents/PeterMihokPrivate/CWC/Module6/City Sights App/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -324,7 +327,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"City Sights App/Preview Content\"";
 				DEVELOPMENT_TEAM = 3GK85Y429W;
 				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "/Users/petermihok/Documents/PeterMihokPrivate/CWC/Module6/City Sights App/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
