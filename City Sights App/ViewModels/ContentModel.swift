@@ -6,9 +6,9 @@
 //
 
 import Foundation
-import CoreLocation // Need to import that library to get the user's location
+import CoreLocation
 
-class ContentModel: NSObject, ObservableObject, CLLocationManagerDelegate {
+class ContentModel: NSObject, CLLocationManagerDelegate, ObservableObject {
     
     var locationManager = CLLocationManager()
     
@@ -20,29 +20,26 @@ class ContentModel: NSObject, ObservableObject, CLLocationManagerDelegate {
         // Init method of NSObject
         super.init()
         
-        // Set ContentModel as the delegate of the locationManager to control and know what has user pressed for the location permission
+        // Set content model as the delegate of the location manager
         locationManager.delegate = self
         
-        // Request permision from the user
+        // Request permission from the user
         locationManager.requestWhenInUseAuthorization()
         
-        // TODO: Start geolocating the user, after we get permision
-        //locationManager.startUpdatingLocation()
     }
     
-    // MARK: - Location manager Delegate Methods
-    
+    // MARK: - Location Manager Delegate Methods
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        if locationManager.authorizationStatus == .authorizedAlways || locationManager.authorizationStatus == .authorizedWhenInUse {
+        
+        if locationManager.authorizationStatus == .authorizedAlways ||
+            locationManager.authorizationStatus == .authorizedWhenInUse {
             
             // We have permission
             // Start geolocating the user, after we get permission
             locationManager.startUpdatingLocation()
-            
-        } else if locationManager.authorizationStatus == .denied {
-            
+        }
+        else if locationManager.authorizationStatus == .denied {
             // We don't have permission
-            
         }
     }
     
@@ -55,19 +52,24 @@ class ContentModel: NSObject, ObservableObject, CLLocationManagerDelegate {
             
             // We have a location
             // Stop requesting the location after we get it once
-            locationManager.stopUpdatingHeading()
+            locationManager.stopUpdatingLocation()
             
             // If we have the coordinates of the user, send into Yelp API
-            getBusnisses(category: Constants.sightsKey, location: userLocation!)
-            getBusnisses(category: Constants.restaurantsKey, location: userLocation!)
+            getBusinesses(category: Constants.sightsKey, location: userLocation!)
+            getBusinesses(category: Constants.restaurantsKey, location: userLocation!)
         }
+        
     }
     
     // MARK: - Yelp API methods
     
-    func getBusnisses(category:String, location:CLLocation) {
+    func getBusinesses(category:String, location:CLLocation) {
         
         // Create URL
+        /*
+        let urlString = "https://api.yelp.com/v3/businesses/search?latitude=\(location.coordinate.latitude)&longitude=\(location.coordinate.longitude)&categories=\(category)&limit=6"
+        let url = URL(string: urlString
+        */
         var urlComponents = URLComponents(string: Constants.apiUrl)
         urlComponents?.queryItems = [
             URLQueryItem(name: "latitude", value: String(location.coordinate.latitude)),
@@ -75,32 +77,34 @@ class ContentModel: NSObject, ObservableObject, CLLocationManagerDelegate {
             URLQueryItem(name: "categories", value: category),
             URLQueryItem(name: "limit", value: "6")
         ]
-        
         let url = urlComponents?.url
         
-        if let url = url { // Checking if url is actual url, so basically checking if the url is not nil in other words
-            
+        if let url = url {
+        
             // Create URL Request
             var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10.0)
             request.httpMethod = "GET"
             request.addValue("Bearer \(Constants.apiKey)", forHTTPHeaderField: "Authorization")
             
-            // Get URL Session
+            // Get URLSession
             let session = URLSession.shared
             
-            // Create DataTask
+            // Create Data Task
             let dataTask = session.dataTask(with: request) { (data, response, error) in
-                // Check that there is no error
+                
+                // Check that there isn't an error
                 if error == nil {
                     
                     do {
-                        // Parse JSON
+                        // Parse json
                         let decoder = JSONDecoder()
                         let result = try decoder.decode(BusinessSearch.self, from: data!)
                         
-                        // This is to avoid assigning things to the @Published property from the background thread, but instead we need to do it in the main tread because we are in the network response call
+                        
                         DispatchQueue.main.async {
-                            // Assign result to the appropriate property                            
+                            
+                            // Assign results to the appropriate property
+                            
                             switch category {
                             case Constants.sightsKey:
                                 self.sights = result.businesses
@@ -111,19 +115,18 @@ class ContentModel: NSObject, ObservableObject, CLLocationManagerDelegate {
                             }
                         }
                         
-                    } catch {
+                    }
+                    catch {
                         print(error)
                     }
-                    
                 }
             }
             
-            // Start the DataTask
+            // Start the Data Task
             dataTask.resume()
         }
         
-        
-        
     }
+    
     
 }
