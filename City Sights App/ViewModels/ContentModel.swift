@@ -71,10 +71,6 @@ class ContentModel: NSObject, CLLocationManagerDelegate, ObservableObject {
     func getBusinesses(category:String, location:CLLocation) {
         
         // Create URL
-        /*
-        let urlString = "https://api.yelp.com/v3/businesses/search?latitude=\(location.coordinate.latitude)&longitude=\(location.coordinate.longitude)&categories=\(category)&limit=6"
-        let url = URL(string: urlString
-        */
         var urlComponents = URLComponents(string: Constants.apiUrl)
         urlComponents?.queryItems = [
             URLQueryItem(name: "latitude", value: String(location.coordinate.latitude)),
@@ -105,16 +101,26 @@ class ContentModel: NSObject, CLLocationManagerDelegate, ObservableObject {
                         let decoder = JSONDecoder()
                         let result = try decoder.decode(BusinessSearch.self, from: data!)
                         
+                        // Sort business
+                        var businesses = result.businesses
+                        businesses.sort { (b1, b2) -> Bool in
+                            return b1.distance ?? 0 < b2.distance ?? 0
+                        }
+                        
+                        
+                        // Call the getImage function of the business
+                        for b in businesses {
+                            b.getImageData()
+                        }
                         
                         DispatchQueue.main.async {
                             
                             // Assign results to the appropriate property
-                            
                             switch category {
                             case Constants.sightsKey:
-                                self.sights = result.businesses
+                                self.sights = businesses
                             case Constants.restaurantsKey:
-                                self.restaurants = result.businesses
+                                self.restaurants = businesses
                             default:
                                 break
                             }
