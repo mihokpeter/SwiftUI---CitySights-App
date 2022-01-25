@@ -14,6 +14,9 @@
 		BD42EEA2277271AE007191CC /* BusinessMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD42EEA1277271AE007191CC /* BusinessMap.swift */; };
 		BD5745BE276FA08D0022B09D /* BusinessRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5745BD276FA08D0022B09D /* BusinessRow.swift */; };
 		BD5745C1276FBE4B0022B09D /* BusinessDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5745C0276FBE4B0022B09D /* BusinessDetail.swift */; };
+		BD6052D027A0758E00C183A9 /* DirectionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6052CF27A0758E00C183A9 /* DirectionsView.swift */; };
+		BD6052D227A075DE00C183A9 /* BusinessTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6052D127A075DE00C183A9 /* BusinessTitle.swift */; };
+		BD6052D427A0796A00C183A9 /* DirectionsMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6052D327A0796A00C183A9 /* DirectionsMap.swift */; };
 		BDBA0FDB2765217200C26111 /* CitySightsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBA0FDA2765217200C26111 /* CitySightsApp.swift */; };
 		BDBA0FDD2765217200C26111 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBA0FDC2765217200C26111 /* LaunchView.swift */; };
 		BDBA0FDF2765217500C26111 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDBA0FDE2765217500C26111 /* Assets.xcassets */; };
@@ -32,6 +35,9 @@
 		BD42EEA1277271AE007191CC /* BusinessMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessMap.swift; sourceTree = "<group>"; };
 		BD5745BD276FA08D0022B09D /* BusinessRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessRow.swift; sourceTree = "<group>"; };
 		BD5745C0276FBE4B0022B09D /* BusinessDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessDetail.swift; sourceTree = "<group>"; };
+		BD6052CF27A0758E00C183A9 /* DirectionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionsView.swift; sourceTree = "<group>"; };
+		BD6052D127A075DE00C183A9 /* BusinessTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessTitle.swift; sourceTree = "<group>"; };
+		BD6052D327A0796A00C183A9 /* DirectionsMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionsMap.swift; sourceTree = "<group>"; };
 		BDBA0FD72765217200C26111 /* City Sights App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "City Sights App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDBA0FDA2765217200C26111 /* CitySightsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitySightsApp.swift; sourceTree = "<group>"; };
 		BDBA0FDC2765217200C26111 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
@@ -95,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				BD42EEA1277271AE007191CC /* BusinessMap.swift */,
+				BD6052D327A0796A00C183A9 /* DirectionsMap.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -103,6 +110,8 @@
 			isa = PBXGroup;
 			children = (
 				BD5745C0276FBE4B0022B09D /* BusinessDetail.swift */,
+				BD6052CF27A0758E00C183A9 /* DirectionsView.swift */,
+				BD6052D127A075DE00C183A9 /* BusinessTitle.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -252,14 +261,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD6052D427A0796A00C183A9 /* DirectionsMap.swift in Sources */,
 				BDBA0FDD2765217200C26111 /* LaunchView.swift in Sources */,
 				BD5745BE276FA08D0022B09D /* BusinessRow.swift in Sources */,
+				BD6052D027A0758E00C183A9 /* DirectionsView.swift in Sources */,
 				BD045519276946D900E8FD31 /* HomeView.swift in Sources */,
 				BDBA0FF02765480B00C26111 /* Business.swift in Sources */,
 				BD04551E27694DF600E8FD31 /* BusinessSectionHeader.swift in Sources */,
 				BDBA0FDB2765217200C26111 /* CitySightsApp.swift in Sources */,
 				BD5745C1276FBE4B0022B09D /* BusinessDetail.swift in Sources */,
 				BDBA0FF2276549D000C26111 /* BusinessSearch.swift in Sources */,
+				BD6052D227A075DE00C183A9 /* BusinessTitle.swift in Sources */,
 				BD04551C27694AB400E8FD31 /* BusinessList.swift in Sources */,
 				BD42EEA2277271AE007191CC /* BusinessMap.swift in Sources */,
 				BD0455202769508B00E8FD31 /* BusinessSection.swift in Sources */,
